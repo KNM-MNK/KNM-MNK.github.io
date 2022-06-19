@@ -29,7 +29,7 @@ logo.style.left = "0px";
 logo.style.position = "absolute";
 logo.style.cssFloat = "left";
 logo.style.padding = "25px";
-logo.style.width = "300px";
+logo.style.width = "50%";
 logo.style.height = "150px";
 document.body.append(logo);
 var version = document.createElement("rect");
