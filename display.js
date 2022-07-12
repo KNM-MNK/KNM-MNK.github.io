@@ -214,7 +214,7 @@ function calendar(){
         }
     }
     var temp = 1;
-    for(var i = shift; i < 31; i++){
+    for(var i = shift; i < 31+shift; i++){
         var select = document.getElementById(i);
         if(temp == theDay){
             document.getElementById(i).style.backgroundColor = "lightyellow";
