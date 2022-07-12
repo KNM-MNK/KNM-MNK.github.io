@@ -327,12 +327,12 @@ function editHide(){
 }
 function editShow(e){
     modify = e.target.id;
-    editBackground.style.display = "block";
-    exitEdit.style.display = "block";
-    clearEdit.style.display = "block";
-    reaction.style.display = "block";
+    editBackground.style.display = "initial";
+    exitEdit.style.display = "initial";
+    clearEdit.style.display = "initial";
+    reaction.style.display = "initial";
     for(var i = 0; i < 8; i++){
-        document.getElementById("food" + i).style.display = "block";
+        document.getElementById("food" + i).style.display = "initial";
     }
     var temp = document.getElementById(modify).innerHTML.substring(0, 3);
     if(temp.substring(1, 2) == ":"){
