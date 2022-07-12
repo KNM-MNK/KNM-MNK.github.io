@@ -9,6 +9,10 @@ var userList = [];
 for(var i = 0; i < 5; i++){
     userList.push("User " + (i+1));
 }
+var pageWidth = window.innerWidth;
+var pageHeight = window.innerHeight;
+console.log(pageWidth + " " + pageHeight);
+//Personal Computer: 2560px width, 1289px height
 
 /*  CLEAR FUNCTION
 document.body.addEventListener("keypress", clearTest);
@@ -38,11 +42,11 @@ version.style.top = "125px";
 version.style.left = "225px";
 version.style.position = "absolute";
 version.style.cssFloat = "left";
-version.style.width = "100px";
+version.style.width = "50px";
 version.style.height = "25px";
 version.style.color = "grey";
 version.style.fontSize = "10px";
-version.innerHTML = "version 1.0.2";
+version.innerHTML = "version 1.0.4";
 document.body.append(version);
 
 // User Information
@@ -177,7 +181,7 @@ function calendar(){
     headline.style.left = "250px";
     headline.style.backgroundColor = "white";
     headline.style.border = "thin darkgrey solid";
-    headline.style.width = "1400px";
+    headline.style.width = (pageWidth*0.7) + "px";
     headline.style.height = "75px";
     headline.style.textAlign = "center";
     headline.style.fontFamily = "calibri";
@@ -192,12 +196,12 @@ function calendar(){
             var box = document.createElement("rect");
             box.style.position = "absolute";
             box.style.cssFloat = "left";
-            box.style.top = (y*200+250) + "px";
-            box.style.left = (x*200+250) + "px";
+            box.style.top = (y*(pageWidth*0.1)+250) + "px";
+            box.style.left = (x*(pageWidth*0.1)+250) + "px";
             box.style.backgroundColor = "white";
             box.style.border = "thin darkgrey solid";
-            box.style.width = "200px";
-            box.style.height = "200px";
+            box.style.width = (pageWidth*0.1) + "px";
+            box.style.height = (pageWidth*0.1) + "px";
             box.style.textAlign = "left";
             box.style.fontFamily = "calibri";
             box.style.fontSize = "20px";
@@ -210,7 +214,7 @@ function calendar(){
         }
     }
     var temp = 1;
-    for(var i = shift; i < 31+shift; i++){
+    for(var i = shift; i < 31; i++){
         var select = document.getElementById(i);
         if(temp == theDay){
             document.getElementById(i).style.backgroundColor = "lightyellow";
@@ -232,15 +236,15 @@ editBackground.style.left = "250px";
 editBackground.style.position = "absolute";
 editBackground.style.backgroundColor = "white";
 editBackground.style.border = "thin black solid";
-editBackground.style.width = "1400px";
-editBackground.style.height = "1075px";
+editBackground.style.width = (pageWidth*0.7) + "px";
+editBackground.style.height = (pageWidth*0.56) + "px";
 editBackground.style.display = "none";
 editBackground.style.fontSize = "50px";
 editBackground.innerHTML = "";
 document.body.append(editBackground);
 var exitEdit = document.createElement("button");
 exitEdit.style.top = "175px";
-exitEdit.style.left = "1600px";
+exitEdit.style.left = (pageWidth*0.75) + "px";
 exitEdit.style.position = "absolute";
 exitEdit.style.backgroundColor = "red";
 exitEdit.style.border = "black solid";
@@ -252,11 +256,11 @@ exitEdit.addEventListener("click", editHide);
 document.body.append(exitEdit);
 var clearEdit = document.createElement("button");
 clearEdit.style.top = "175px";
-clearEdit.style.left = "1000px";
+clearEdit.style.left = "750px";
 clearEdit.style.position = "absolute";
 clearEdit.style.backgroundColor = "ivory";
 clearEdit.style.border = "thin black solid";
-clearEdit.style.width = "100px";
+clearEdit.style.width = (pageWidth*0.075) + "px";
 clearEdit.style.height = "25px";
 clearEdit.style.display = "none";
 clearEdit.innerHTML = "Clear Entry";
@@ -273,10 +277,10 @@ btn(7, "images/TreenutBTN.png");
 function btn(x, source){
     var foodButton = document.createElement("img");
     foodButton.src = source;
-    foodButton.style.top = "300px";
-    foodButton.style.left = (x*100+275) + "px";
-    foodButton.style.width = "100px";
-    foodButton.style.height = "150px";
+    foodButton.style.top = (pageWidth*0.1) + "px";
+    foodButton.style.left = (x*(pageWidth*0.075)+275) + "px";
+    foodButton.style.width = (pageWidth*0.075) + "px";
+    foodButton.style.height = (pageWidth*0.1) + "px";
     foodButton.style.position = "absolute";
     foodButton.style.border = "thin black solid";
     foodButton.id = "food" + x;
@@ -285,7 +289,7 @@ function btn(x, source){
     document.body.append(foodButton);
 }
 var reaction = document.createElement("input");
-reaction.style.top = "550px";
+reaction.style.top = (pageWidth*0.25) + "px";
 reaction.style.left = "280px";
 reaction.style.position = "absolute";
 reaction.style.width = "500px";
