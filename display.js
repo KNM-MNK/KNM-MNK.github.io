@@ -102,82 +102,89 @@ const currentDate = new Date();
 var theDay = currentDate.getDate();
 var theYear = currentDate.getFullYear();
 var theMonth = monthFilter(currentDate.getMonth());
-calendar();
+calendar(maxDay);
 function monthFilter(m){
     if(m == 0){
-        shift = shiftFilter((theYear%7));
+        shift = (theYear%7)%7;
+        maxDay = 31;
         console.log(shift);
         return "January";
     }
     if(m == 1){
-        shift = shiftFilter((theYear%7-4));
+        shift = (theYear%7-4)%7;
+        maxDay = 28;
         console.log(shift);
         return "February";
     }
     if(m == 2){
-        shift = shiftFilter((theYear%7-4));
+        shift = (theYear%7-4)%7;
+        maxDay = 31;
         console.log(shift);
         return "March";
     }
     if(m == 3){
-        shift = shiftFilter((theYear%7-1));
+        shift = (theYear%7-1)%7;
+        maxDay = 30;
         console.log(shift);
         return "April";
     }
     if(m == 4){
-        shift = shiftFilter((theYear%7+1));
+        shift = (theYear%7+1)%7;
+        maxDay = 31;
         console.log(shift);
         return "May";
     }
     if(m == 5){
-        shift = shiftFilter((theYear%7-3));
+        shift = (theYear%7-3)%7;
+        maxDay = 30;
         console.log(shift);
         return "June";
     }
     if(m == 6){
-        shift = shiftFilter((theYear%7-1));
+        shift = (theYear%7-1)%7;
+        maxDay = 31;
         console.log(shift);
         return "July";
     }
     if(m == 7){
-        shift = shiftFilter((theYear%7-5));
+        shift = (theYear%7-5)%7;
+        maxDay = 31;
         console.log(shift);
         return "August";
     }
     if(m == 8){
-        shift = shiftFilter((theYear%7-2));
+        shift = (theYear%7-2)%7;
+        maxDay = 30;
         console.log(shift);
         return "September";
     }
     if(m == 9){
-        shift = shiftFilter((theYear%7));
+        shift = (theYear%7)%7;
+        maxDay = 31;
         console.log(shift);
         return "October";
     }
     if(m == 10){
-        shift = shiftFilter((theYear%7-4));
+        shift = (theYear%7-4)%7;
+        maxDay = 30;
         console.log(shift);
         return "November";
     }
     if(m == 11){
-        shift = shiftFilter((theYear%7-2));
+        shift = (theYear%7-2)%7;
+        maxDay = 31;
         console.log(shift);
         return "December";
     }
 }
-function shiftFilter(s){
-    if(s >= 7){
-        s = s%7;
-    }
-    return s;
-}
 
 // Creating Calendar Element
-function calendar(){
+function calendar(max){
+    console.log(max);
     var headline = document.createElement("rect");
     headline.style.position = "absolute";
     headline.style.cssFloat = "left";
-    headline.style.top = "175px";
+    headline.style.top = "200px";
     headline.style.left = "250px";
     headline.style.backgroundColor = "white";
     headline.style.border = "thin darkgrey solid";
@@ -196,7 +203,7 @@ function calendar(){
             var box = document.createElement("rect");
             box.style.position = "absolute";
             box.style.cssFloat = "left";
-            box.style.top = (y*(pageWidth*0.1)+250) + "px";
+            box.style.top = (y*(pageWidth*0.1)+275) + "px";
             box.style.left = (x*(pageWidth*0.1)+250) + "px";
             box.style.backgroundColor = "white";
             box.style.border = "thin darkgrey solid";
@@ -214,7 +221,10 @@ function calendar(){
         }
     }
     var temp = 1;
-    for(var i = shift; i < 31+shift; i++){
+    for(var i = shift; i < max + shift; i++){
+        if(i > 34){
+            return;
+        }
         var select = document.getElementById(i);
         if(temp == theDay){
             document.getElementById(i).style.backgroundColor = "lightyellow";
@@ -231,7 +241,7 @@ function calendar(){
 
 // Selection Edit PopUp
 var editBackground = document.createElement("rect");
-editBackground.style.top = "175px";
+editBackground.style.top = "200px";
 editBackground.style.left = "250px";
 editBackground.style.position = "absolute";
 editBackground.style.backgroundColor = "white";
@@ -243,8 +253,8 @@ editBackground.style.fontSize = "50px";
 editBackground.innerHTML = "";
 document.body.append(editBackground);
 var exitEdit = document.createElement("button");
-exitEdit.style.top = "175px";
-exitEdit.style.left = (pageWidth*0.75) + "px";
+exitEdit.style.top = "200px";
+exitEdit.style.left = (pageWidth*0.7) + "px";
 exitEdit.style.position = "absolute";
 exitEdit.style.backgroundColor = "red";
 exitEdit.style.border = "black solid";
@@ -255,7 +265,7 @@ exitEdit.innerHTML = "X";
 exitEdit.addEventListener("click", editHide);
 document.body.append(exitEdit);
 var clearEdit = document.createElement("button");
-clearEdit.style.top = "175px";
+clearEdit.style.top = "200px";
 clearEdit.style.left = "750px";
 clearEdit.style.position = "absolute";
 clearEdit.style.backgroundColor = "ivory";
@@ -277,7 +287,7 @@ btn(7, "images/TreenutBTN.png");
 function btn(x, source){
     var foodButton = document.createElement("img");
     foodButton.src = source;
-    foodButton.style.top = (pageWidth*0.1) + "px";
+    foodButton.style.top = (pageWidth*0.3) + "px";
     foodButton.style.left = (x*(pageWidth*0.075)+275) + "px";
     foodButton.style.width = (pageWidth*0.075) + "px";
     foodButton.style.height = (pageWidth*0.1) + "px";
@@ -331,12 +341,12 @@ function editHide(){
 }
 function editShow(e){
     modify = e.target.id;
-    editBackground.style.display = "initial";
-    exitEdit.style.display = "initial";
-    clearEdit.style.display = "initial";
-    reaction.style.display = "initial";
+    editBackground.style.display = "block";
+    exitEdit.style.display = "block";
+    clearEdit.style.display = "block";
+    reaction.style.display = "block";
     for(var i = 0; i < 8; i++){
-        document.getElementById("food" + i).style.display = "initial";
+        document.getElementById("food" + i).style.display = "block";
     }
     var temp = document.getElementById(modify).innerHTML.substring(0, 3);
     if(temp.substring(1, 2) == ":"){
