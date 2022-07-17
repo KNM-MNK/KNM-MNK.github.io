@@ -2,4 +2,8 @@
 
 The beginning of the Allergy Calendar App in the basis as the KNM-MNK.github.io website.
 
-(Fill Text)
+Current Version: 1.0.4
+
+Language: Javascript
+
+PUBLIC SITE
